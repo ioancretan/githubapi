@@ -1,4 +1,4 @@
-package com.example.githubsample
+package com.example.githubsample.login
 
 interface OpenHomeScreenCallBack {
     fun openHomeScreen()

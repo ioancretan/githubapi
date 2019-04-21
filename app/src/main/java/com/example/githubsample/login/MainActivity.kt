@@ -1,9 +1,8 @@
-package com.example.githubsample
+package com.example.githubsample.login
 
-import android.arch.lifecycle.ReportFragment
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import com.example.githubsample.login.LoginFragment
+import com.example.githubsample.R
 import com.example.githubsample.repos.ReposListFragment
 
 

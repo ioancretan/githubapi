@@ -1,4 +1,4 @@
-package com.example.githubsample
+package com.example.githubsample.app
 
 import android.app.Application
 

@@ -1,4 +1,4 @@
-package com.example.githubsample
+package com.example.githubsample.utils
 
 object CredentialsDataSource {
 
@@ -7,11 +7,17 @@ object CredentialsDataSource {
 
 
     fun getAccessToken(): String {
-        return StringSharedPref.getString(ACCESS_TOKEN, EMPTY_STRING)
+        return StringSharedPref.getString(
+            ACCESS_TOKEN,
+            EMPTY_STRING
+        )
     }
 
     fun saveAccessToken(token: String) {
-        StringSharedPref.putString(ACCESS_TOKEN, token)
+        StringSharedPref.putString(
+            ACCESS_TOKEN,
+            token
+        )
     }
 
 }
