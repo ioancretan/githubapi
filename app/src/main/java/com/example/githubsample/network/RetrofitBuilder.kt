@@ -1,4 +1,4 @@
-package com.example.githubsample
+package com.example.githubsample.network
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.GsonBuilder
@@ -13,6 +13,9 @@ object RetrofitBuilder {
 
     private var retrofit: Retrofit? = null
     const val BASE_URL = "https://github.com"
+    const val API_BASE_URL = "https://api.github.com"
+    const val TOKEN = "token "
+
 
     fun getRetrofitInstance(): Retrofit {
 
@@ -35,6 +38,7 @@ object RetrofitBuilder {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
+
         return retrofit!!
     }
 

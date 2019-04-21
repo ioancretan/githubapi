@@ -1,9 +1,8 @@
-package com.example.githubsample
+package com.example.githubsample.utils
 
-import android.app.Application
 import android.content.Context
-import android.content.ContextWrapper
 import android.content.SharedPreferences
+import com.example.githubsample.app.GitHubSampleApp
 
 object StringSharedPref {
 

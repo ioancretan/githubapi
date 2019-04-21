@@ -3,9 +3,9 @@ package com.example.githubsample.login
 import android.annotation.SuppressLint
 import android.net.Uri
 import com.example.githubsample.network.models.AccessToken
-import com.example.githubsample.CredentialsDataSource
-import com.example.githubsample.CredentialsDataSource.EMPTY_STRING
-import com.example.githubsample.RetrofitBuilder
+import com.example.githubsample.utils.CredentialsDataSource
+import com.example.githubsample.utils.CredentialsDataSource.EMPTY_STRING
+import com.example.githubsample.network.RetrofitBuilder
 import com.example.githubsample.network.GitHubApi
 import com.example.githubsample.network.NetworkUtils
 import com.example.githubsample.network.NetworkUtils.Companion.CLIENT_ID
@@ -29,7 +29,7 @@ class LoginPresenter(
     }
 
     @SuppressLint("CheckResult")
-    fun loadAccesToken(uri: Uri?) {
+    fun loadAccesTokenIfUriExists(uri: Uri?) {
 
         if (isUriValid(uri)) {
             val code: String = uri!!.getQueryParameter(CODE)
@@ -39,9 +39,8 @@ class LoginPresenter(
                 .map { acessTokenResponse -> getAccesTokenFromResponse(acessTokenResponse) }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                    { acessToken -> onTokenReceived(acessToken) },
-                    { throwable -> this.loginView.onError(throwable.message!!) })
-
+                    { acessToken -> onTokenReceived(acessToken) }
+                ) { throwable -> this.loginView.onError(throwable.localizedMessage) }
         }
     }
 

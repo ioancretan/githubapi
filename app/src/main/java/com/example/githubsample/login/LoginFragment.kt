@@ -8,18 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.githubsample.OpenHomeScreenCallBack
 import com.example.githubsample.R
 
 
 @SuppressLint("ValidFragment")
 class LoginFragment(val openHomeSCreenCallBack: OpenHomeScreenCallBack) : BaseFragment(), LoginView {
-    override fun openHomeScreen() {
-        openHomeSCreenCallBack.openHomeScreen()
-    }
-
     private lateinit var loginPresenter: LoginPresenter
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.login_fragment, container, false)
@@ -47,7 +41,10 @@ class LoginFragment(val openHomeSCreenCallBack: OpenHomeScreenCallBack) : BaseFr
 
     override fun onResume() {
         super.onResume()
-        loginPresenter.loadAccesToken(activity!!.intent.data)
+        loginPresenter.loadAccesTokenIfUriExists(activity!!.intent.data)
     }
 
+    override fun openHomeScreen() {
+        openHomeSCreenCallBack.openHomeScreen()
+    }
 }
